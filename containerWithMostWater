@@ -1,0 +1,36 @@
+class Solution {
+    public int maxArea(int[] height) {
+        int l=height.length;
+       /* int max=0;
+        int i=0;
+        int j=1;
+        int curr,maxi=0,cap,mini;
+        for(i=0;i<l;i++)
+        {
+            curr=height[i];
+            for(j=i+1;j<l;j++)
+            {
+                mini=Integer.min(curr,height[j]);
+                cap=mini*((j+1)-(i+1));
+                maxi=Integer.max(maxi,cap);
+            }
+        }
+        return maxi;*/ //brute force
+        int maxi=0;
+        int mini =0;
+        int lh=0,cap;
+        int rh=l-1;
+        while(lh<rh)
+        {
+            mini=Math.min(height[lh],height[rh]);
+            cap=mini*(rh-lh);
+            maxi=Integer.max(maxi,cap);
+            if(height[lh]<height[rh])
+                lh++;
+            else
+                rh--;
+        }
+        return maxi;
+        
+    }
+}
